@@ -12,24 +12,11 @@ import warnings
 warnings.filterwarnings('ignore')
 
 
-path_w2v = "/data/guesslist_example"
-model = KeyedVectors.load_word2vec_format(path_w2v,binary=True)
+guesslist = "/data/guesslist_example"
 
 secret_word = "madre"
 
-
-# In[18]:
-
-
-def word_to_guess(secret_word, topn = 100000):
-    guesslist = pd.DataFrame(model.most_similar(secret_word, topn = topn), columns = ['words', 'similarity']) 
-    return guesslist
-
 guesslist = word_to_guess(secret_word)
-
-
-# In[19]:
-
 
 # Función que solo muestra el df si no está vacío
 def is_empty(df):
