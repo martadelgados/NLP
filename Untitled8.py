@@ -7,7 +7,7 @@
 
 
 import pandas as pd
-pip install gensim
+git+https://github.com/gensim
 import gensim
 from gensim.models import Word2Vec,KeyedVectors
 
