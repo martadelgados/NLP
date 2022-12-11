@@ -8,7 +8,8 @@
 import streamlit as st
 
 import pandas as pd
-
+import gensim
+import gensim.downloader as api
 
 st.title('Guess The Word')
 # streamlit run Untitled8.py
