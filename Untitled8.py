@@ -4,7 +4,7 @@
 # # INFORMACIÓN NO ESTRUCTURADA
 
 # In[1]:
-
+pip install streamlit
 import streamlit as st
 
 import pandas as pd
