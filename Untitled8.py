@@ -6,10 +6,16 @@
 # In[1]:
 
 import streamlit as st
+
 import pandas as pd
+
+
+st.title('Guess The Word')
+streamlit run Untitled8.py
+
+
 import gensim
 from gensim.models import Word2Vec,KeyedVectors
-
 
 # In[2]:
 
