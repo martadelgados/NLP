@@ -1,3 +1,4 @@
 streamlit
 pandas == 1.5.2 
 gensim
+from gensim.models import Word2Vec,KeyedVectors
