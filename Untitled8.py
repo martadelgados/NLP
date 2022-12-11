@@ -16,8 +16,6 @@ guesslist = "/data/guesslist_example"
 
 secret_word = "madre"
 
-guesslist = word_to_guess(secret_word)
-
 # Función que solo muestra el df si no está vacío
 def is_empty(df):
     if results.empty == False:
