@@ -3,8 +3,6 @@
 
 # # INFORMACIÓN NO ESTRUCTURADA
 
-# In[1]:
-pip install streamlit
 import streamlit as st
 
 import pandas as pd
@@ -12,16 +10,9 @@ import pandas as pd
 
 st.title('Guess The Word')
 
-import gensim
-import gensim.downloader as api
 from gensim.models import Word2Vec,KeyedVectors
-# In[2]:
-
-
 model = KeyedVectors.load_word2vec_format('SBW-vectors-300-min5.bin.gz',binary=True)
 
-
-# In[ ]:
 
 
 def guess():
