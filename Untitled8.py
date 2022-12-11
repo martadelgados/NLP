@@ -11,7 +11,7 @@ import pandas as pd
 st.title('Guess The Word')
 
 from gensim.models import Word2Vec,KeyedVectors
-path_w2v = 'https://cs.famaf.unc.edu.ar/~ccardellino/SBWCE/SBW-vectors-300-min5.bin.gz'
+path_w2v = "NLP/data/guesslist_example"
 model = KeyedVectors.load_word2vec_format(path_w2v,binary=True)
 
 
