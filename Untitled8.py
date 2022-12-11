@@ -11,7 +11,7 @@ import pandas as pd
 st.title('Guess The Word')
 
 from gensim.models import Word2Vec,KeyedVectors
-path_w2v = './data/embedding/word2vec/SBW-vectors-300-min5.bin.gz'
+path_w2v = 'https://cs.famaf.unc.edu.ar/~ccardellino/SBWCE/clean_corpus.tar.bz2'
 model = KeyedVectors.load_word2vec_format(path_w2v,binary=True)
 
 
