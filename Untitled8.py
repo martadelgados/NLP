@@ -14,8 +14,8 @@ st.title('Guess The Word')
 streamlit run Untitled8.py
 
 
-import gensim
-from gensim.models import Word2Vec,KeyedVectors
+# import gensim
+# from gensim.models import Word2Vec,KeyedVectors
 
 # In[2]:
 
