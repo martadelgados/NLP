@@ -4,101 +4,77 @@
 # # INFORMACIÓN NO ESTRUCTURADA
 
 import streamlit as st
-
-import pandas as pd
-
-
 st.title('Guess The Word')
 
+import pandas as pd
 from gensim.models import Word2Vec,KeyedVectors
+import warnings
+warnings.filterwarnings('ignore')
+
+
 path_w2v = "NLP/data/guesslist_example"
 model = KeyedVectors.load_word2vec_format(path_w2v,binary=True)
 
-
-
-def guess():
-    guesslist = pd.DataFrame(model.most_similar("", topn = topn), columns = ['words', 'similarity'])
-
-
-# In[24]:
-
-
-def guess(word, guessword, topn = 2000):
-    guesslist = pd.DataFrame(model.most_similar("house", topn = topn), columns = ['words', 'similarity'])
-    results = guesslist[guesslist['words'].str.contains(r'\b' + word + r'\b')]
-    return results
-
-
-# In[25]:
-
-
-guess("techno", "house")
-
-
-# In[10]:
-
-
-user_guess = input("Enter a word to guess: ")
-guess(user_guess, "house")
+secret_word = "madre"
 
 
 # In[18]:
 
 
-guesslist = pd.DataFrame(model.most_similar("house", topn = 50), columns = ['words', 'similarity'])
-
-
-# In[36]:
-
-
-secret_word = "house"
-def guess(secret_word, topn = 10000):
-    guesslist = pd.DataFrame(model.most_similar(secret_word, topn = topn), columns = ['words', 'similarity'])
+def word_to_guess(secret_word, topn = 100000):
+    guesslist = pd.DataFrame(model.most_similar(secret_word, topn = topn), columns = ['words', 'similarity']) 
     return guesslist
 
-
-# In[38]:
-
-
-guesslist = guess(secret_word, 10000)
+guesslist = word_to_guess(secret_word)
 
 
-# In[39]:
+# In[19]:
 
 
-user_guess = input("Please guess the secret word: ")
+# Función que solo muestra el df si no está vacío
+def is_empty(df):
+    if results.empty == False:
+        display(df)
+    else:
+        print("Esta palabra no ha sido muy acertada...")
+
+# Función que indica pistas para adivinar la palabra
+def is_pista(pista, secret_word, guesslist):
+    if pista == "pista1":
+        print("La primera letra de la palabra es: " + secret_word[0])
+    if pista == "pista2":
+        print("La longitud de la palabra es: " + str(len(secret_word)))
+    if pista == "pista3":
+        print("La palabra más similar es " + str(model.most_similar(secret_word, topn = 1)))
+
+
+# In[20]:
+
+
+user_guess = input("Intenta adivinar la palabra: ")
+results = pd.DataFrame()
 while user_guess != secret_word:
-    print(guesslist[guesslist['words'].str.contains(r'\b' + user_guess + r'\b')])
-    user_guess = input("Please guess the secret word again: ")
+    is_pista(user_guess, secret_word, guesslist)
+    results = results.append(guesslist[guesslist['words'].str.contains(r'\b' + user_guess + r'\b')])
+    results = results.sort_values('similarity', ascending = False)
+    results = results.drop_duplicates()
+    is_empty(results)
+    user_guess = input("Intenta adivinar la palabra: ")
 else:
-    print("Correct!!!!!!!!!!")
+    print("Muy biennn!!!!")
 
 
-# In[ ]:
+# In[21]:
 
 
+guesslist.head(50)
 
 
-
-# In[ ]:
-
+# In[24]:
 
 
+guesslist.to_parquet("guesslist_example")
 
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
 
 
 
