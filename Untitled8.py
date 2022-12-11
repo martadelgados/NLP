@@ -35,11 +35,10 @@ def is_pista(pista, secret_word, guesslist):
 
 # In[20]:
 
-
+st.button('Click me', on_click = is_pista(user_guess, secret_word, guesslist))
 user_guess = input("Intenta adivinar la palabra: ")
 results = pd.DataFrame()
-while user_guess != secret_word:
-    is_pista(user_guess, secret_word, guesslist)
+while user_guess != secret_word:   
     results = results.append(guesslist[guesslist['words'].str.contains(r'\b' + user_guess + r'\b')])
     results = results.sort_values('similarity', ascending = False)
     results = results.drop_duplicates()
