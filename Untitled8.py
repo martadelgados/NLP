@@ -11,7 +11,7 @@ import pandas as pd
 
 
 st.title('Guess The Word')
-streamlit run Untitled8.py
+# streamlit run Untitled8.py
 
 
 # import gensim
