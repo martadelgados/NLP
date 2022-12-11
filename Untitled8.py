@@ -8,16 +8,13 @@
 import streamlit as st
 
 import pandas as pd
-import gensim
-import gensim.downloader as api
+
 
 st.title('Guess The Word')
-# streamlit run Untitled8.py
 
-
-# import gensim
-# from gensim.models import Word2Vec,KeyedVectors
-
+import gensim
+import gensim.downloader as api
+from gensim.models import Word2Vec,KeyedVectors
 # In[2]:
 
 
