@@ -7,7 +7,6 @@
 
 
 import pandas as pd
-git+https://github.com/gensim
 import gensim
 from gensim.models import Word2Vec,KeyedVectors
 
